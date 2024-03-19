@@ -9,7 +9,9 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "PermitRequestApp.Domain", "
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "PermitRequestApp.Infrastructure", "PermitRequestApp.Infrastructure\PermitRequestApp.Infrastructure.csproj", "{C2EFC1BD-417B-46B2-B1B4-7043E26065C8}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PermitRequestApp.Application", "PermitRequestApp.Application\PermitRequestApp.Application.csproj", "{439BAAEF-E100-4D09-B295-17D0030C887D}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "PermitRequestApp.Application", "PermitRequestApp.Application\PermitRequestApp.Application.csproj", "{439BAAEF-E100-4D09-B295-17D0030C887D}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PermitRequestApp.MVC", "PermitRequestApp.MVC\PermitRequestApp.MVC.csproj", "{24A927E2-A19C-412C-BC82-5879A375B03D}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -33,6 +35,10 @@ Global
 		{439BAAEF-E100-4D09-B295-17D0030C887D}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{439BAAEF-E100-4D09-B295-17D0030C887D}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{439BAAEF-E100-4D09-B295-17D0030C887D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{24A927E2-A19C-412C-BC82-5879A375B03D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{24A927E2-A19C-412C-BC82-5879A375B03D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{24A927E2-A19C-412C-BC82-5879A375B03D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{24A927E2-A19C-412C-BC82-5879A375B03D}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

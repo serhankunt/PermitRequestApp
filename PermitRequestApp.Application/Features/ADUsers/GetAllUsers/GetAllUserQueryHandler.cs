@@ -13,7 +13,8 @@ internal sealed class GetAllUserQueryHandler(IADUserRepository adUserRepository)
         var response = await adUserRepository
             .GetAllUsers()
             .Select(s=>
-            new GetAllUserQueryResponse(s.Id,s.FirstName +" " + s.LastName)).ToListAsync(cancellationToken);
+            new GetAllUserQueryResponse(s.Id,s.FirstName + " " + s.LastName))
+            .ToListAsync(cancellationToken);
 
         return response;
     }

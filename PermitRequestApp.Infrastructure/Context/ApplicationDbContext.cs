@@ -1,4 +1,5 @@
-﻿using Microsoft.EntityFrameworkCore;
+﻿using GenericRepository;
+using Microsoft.EntityFrameworkCore;
 using PermitRequestApp.Domain.LeaveRequests;
 using System;
 using System.Collections.Generic;
@@ -8,7 +9,7 @@ using System.Text;
 using System.Threading.Tasks;
 
 namespace PermitRequestApp.Infrastructure.Context;
-internal class ApplicationDbContext : DbContext
+internal class ApplicationDbContext : DbContext , Domain.Abstractions.IUnitOfWork
 {
     public ApplicationDbContext(DbContextOptions options) : base(options)
     {
@@ -22,6 +23,7 @@ internal class ApplicationDbContext : DbContext
     public override Task<int> SaveChangesAsync(CancellationToken cancellationToken = default)
     {
         var entries = ChangeTracker.Entries<LeaveRequest>();
+
         foreach (var entry in entries)
         {
             switch (entry.State)
@@ -32,10 +34,8 @@ internal class ApplicationDbContext : DbContext
                 case EntityState.Modified:
                     entry.Entity.SetModifiedAt();
                     break;
-               
             }
         }
-
 
         return base.SaveChangesAsync(cancellationToken);
     }

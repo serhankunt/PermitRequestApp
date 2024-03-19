@@ -1,4 +1,5 @@
 ﻿using Microsoft.Extensions.DependencyInjection;
+using PermitRequestApp.Domain.CumulativeLeaveRequests;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -14,10 +15,10 @@ public static class DependencyInjection
     {
         services.AddMediatR(configuration =>
         {
-            configuration.RegisterServicesFromAssemblies(Assembly.GetExecutingAssembly());
+            configuration.RegisterServicesFromAssemblies(
+                Assembly.GetExecutingAssembly(),
+                typeof(CumulativeLeaveRequest).Assembly);
         });
-
-
 
         return services;
     }

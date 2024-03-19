@@ -7,14 +7,14 @@ namespace PermitRequestApp.Domain.LeaveRequests;
 public sealed class LeaveRequest : Entity
 {
 
-    private LeaveRequest(int formNumber, LeaveType leaveType, string reason, DateTime startDate, DateTime endDate, Workflow workflowStatus, Guid assignedUserId)
+    private LeaveRequest(int formNumber, LeaveType leaveType, string? reason, DateTime startDate, DateTime endDate,Guid requestUserId,  Guid? assignedUserId)
     {
         FormNumber = formNumber;
         LeaveType = leaveType;
         Reason = reason;
         StartDate = startDate;
         EndDate = endDate;
-        WorkflowStatus = workflowStatus;
+        RequestUserId = requestUserId;
         AssignedUserId = assignedUserId;
 
     }
@@ -25,26 +25,26 @@ public sealed class LeaveRequest : Entity
     }
     public int FormNumber { get; private set; }
     public string RequestFormNumber => $"LRF-{FormNumber.ToString().PadLeft(6, '0')}";
-
-
     public LeaveType LeaveType { get; private set; } = LeaveType.AnnualLeave;
-    public string Reason { get; private set; } = string.Empty;
+    public string? Reason { get; private set; } 
     public DateTime StartDate { get; private set; }
     public DateTime EndDate { get; private set; }
-    public Workflow WorkflowStatus { get; private set; } = Workflow.None;
-    public Guid AssignedUserId { get; private set; }
+    public Workflow WorkflowStatus { get; private set; } = Workflow.Pending;
+    public Guid RequestUserId { get; private set; }
+    public ADUser? RequestUser { get; private set; }
+    public Guid? AssignedUserId { get; private set; }
     public ADUser? AssignedUser { get; private set; }
     public DateTime CreatedAt { get; set; }
-    public Guid CreatedById { get; private set; }
+    public Guid? CreatedById { get; private set; }
     public ADUser? CreatedBy { get; private set; }
     public DateTime? LastModifiedAt { get; set; }
-    public Guid LastModifiedById { get; private set; }
+    public Guid? LastModifiedById { get; private set; }
     public ADUser? LastModifiedBy { get; private set; }
 
-    public static LeaveRequest Create(int formNumber, LeaveType leaveType, string reason, DateTime startDate, DateTime endDate, Workflow workflowStatus, Guid assignedUserId)
+    public static LeaveRequest Create(int formNumber, LeaveType leaveType, string? reason, DateTime startDate, DateTime endDate, Guid requestUserId, Guid? assignedUserId)
     {
 
-        return new(formNumber, leaveType, reason, startDate, endDate, workflowStatus, assignedUserId);
+        return new(formNumber, leaveType, reason, startDate, endDate, requestUserId, assignedUserId);
     }
     public void SetCreatedAt()
     {

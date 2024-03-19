@@ -22,6 +22,18 @@ app.UseHttpsRedirection();
 
 app.UseAuthorization();
 
+app.Use(async (context, next) =>
+{
+	try
+	{
+		await next(context);
+	}
+	catch (Exception ex)
+	{
+		Console.WriteLine($"Hata oluþtu: {ex.Message}");
+	}
+});
+
 app.MapControllers();
 
 app.Run();
